@@ -80,7 +80,8 @@ export default function Layout() {
             <img 
               src="/nova-logo-1.png" 
               alt="Nova Vista Education" 
-              className="h-12 md:h-16 lg:h-16 w-auto object-contain"
+              className="h-12 md:h-16 lg:h-16
+               w-auto object-contain"
             />
           </Link>
 

@@ -48,7 +48,7 @@ export default function Home() {
 
     // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange);
-    
+
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
@@ -59,7 +59,7 @@ export default function Home() {
     setFormStatus("loading");
     const formData = new FormData(e.currentTarget);
     const payload = Object.fromEntries(formData.entries());
-    
+
     try {
       await submitContactForm(payload);
       setFormStatus("success");
@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <>
-      <Hero 
+      <Hero
         tagline="Nova Vista Education"
         headline="Empowering Growth. Elevating Futures."
         subline="A platform committed to academic recognition and personal skill enhancement."
@@ -88,8 +88,6 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="kicker mb-4">About Us</p>
-            <h2 className="section-heading mb-8">Nova Vista Education</h2>
             <p className="text-xl md:text-2xl text-slateInk/70 leading-relaxed font-serif mb-6">
               Nova Vista Education is built on the belief that growth comes in many forms — through experience, achievement, and continuous learning.
             </p>
@@ -101,7 +99,7 @@ export default function Home() {
             {meta?.stats && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-100 pt-12">
                 {meta.stats.map((stat, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={stat.label}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -206,18 +204,7 @@ export default function Home() {
       {/* Academic Recognition Section */}
       <section id="academic" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="kicker mb-4">Distinction</p>
-            <h2 className="section-heading mb-6">Academic Recognition</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-          </motion.div>
+
 
           {/* Overview Section */}
           <motion.div
@@ -227,7 +214,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-6">Overview</h3>
+            <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-6">Academic Recognition</h3>
+            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
             <p className="text-lg md:text-xl text-slateInk/80 leading-relaxed">
               Certain individuals make extraordinary contributions through their work, leadership, innovation, or service. Nova Vista facilitates postgraduate honorary titles and the D.Litt. for those whose achievements deserve formal academic acknowledgment.
             </p>
@@ -335,18 +323,7 @@ export default function Home() {
       {/* Personality Development Section */}
       <section id="personality" className="py-24 bg-parchment">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="kicker mb-4">Excellence</p>
-            <h2 className="section-heading mb-6">Personality Development</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-          </motion.div>
+   
 
           {/* Overview Section */}
           <motion.div
@@ -356,7 +333,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-6">Overview</h3>
+            <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-6">Personality Development</h3>
+            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
             <p className="text-lg md:text-xl text-slateInk/80 leading-relaxed">
               A focused program designed to enhance communication, presentation, self-confidence, and professional conduct — essential qualities for career-oriented individuals.
             </p>
@@ -465,42 +443,58 @@ export default function Home() {
       {/* Why Nova Vista Section */}
       <section id="why-nova-vista" className="py-24 bg-parchment">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="kicker mb-4">Why Choose Us</p>
-            <h2 className="section-heading mb-6">Why Nova Vista</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Side - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="kicker mb-4">Why Choose Us</p>
+              <h2 className="section-heading mb-6">Why Nova Vista</h2>
+              <div className="h-1 w-20 bg-crimson mb-8"></div>
+              
+              <div className="space-y-4">
+                {[
+                  "Clear and professional processes",
+                  "Recognized and trusted certifications",
+                  "Experienced mentors and faculty",
+                  "Practical, outcome-focused learning",
+                  "Supportive guidance throughout the journey"
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex items-start gap-4 group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-crimson text-white rounded-full flex items-center justify-center font-bold text-sm group-hover:scale-110 transition-transform">
+                      ✓
+                    </div>
+                    <p className="text-slateInk/80 text-base md:text-lg leading-relaxed pt-1">{item}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              "Clear and professional processes",
-              "Recognized and trusted certifications",
-              "Experienced mentors and faculty",
-              "Practical, outcome-focused learning",
-              "Supportive guidance throughout the journey"
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="bg-white rounded-2xl shadow-editorial p-8 border border-slate-100 hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-crimson text-white rounded-full flex items-center justify-center font-bold text-lg">
-                    ✓
-                  </div>
-                  <span className="text-slateInk/80 text-lg leading-relaxed font-medium">{item}</span>
-                </div>
-              </motion.div>
-            ))}
+            {/* Right Side - Image */}
+            <motion.div
+              className="relative order-first lg:order-last"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="absolute inset-0 bg-crimson transform rotate-3 rounded-2xl opacity-10 translate-x-4 translate-y-4"></div>
+              <img
+                src="https://picsum.photos/800/1000?random=6"
+                alt="Why Nova Vista"
+                className="rounded-2xl shadow-editorial relative z-10 object-cover w-full h-[400px] md:h-[500px] lg:h-[600px]"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -518,7 +512,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {articles.map((article, index) => (
-              <motion.article 
+              <motion.article
                 key={article.id}
                 className="card overflow-hidden group cursor-pointer flex flex-col h-full"
                 initial={{ opacity: 0, y: 20 }}
@@ -527,10 +521,10 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="h-48 bg-slate-200 relative overflow-hidden">
-                  <img 
-                    src="/s3/s3-i1.jpg" 
-                    alt="Article thumbnail" 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                  <img
+                    src="/s3/s3-i1.jpg"
+                    alt="Article thumbnail"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold tracking-widest uppercase text-slateInk rounded-sm">
                     {article.category}
@@ -638,44 +632,44 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-8">Send Us an Enquiry</h3>
-              
+
               <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Full Name</label>
-                    <input 
-                      name="fullName" 
-                      required 
-                      placeholder="John Doe" 
-                      className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent" 
+                    <input
+                      name="fullName"
+                      required
+                      placeholder="John Doe"
+                      className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Email Address</label>
-                    <input 
-                      name="email" 
-                      type="email" 
-                      required 
-                      placeholder="john@example.com" 
-                      className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent" 
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="john@example.com"
+                      className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Phone Number</label>
-                  <input 
-                    name="phone" 
-                    type="tel" 
-                    placeholder="+1 (555) 123-4567" 
-                    className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent" 
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="+1 (555) 123-4567"
+                    className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Program of Interest</label>
-                  <select 
-                    name="program" 
+                  <select
+                    name="program"
                     className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                     defaultValue=""
                   >
@@ -689,12 +683,12 @@ export default function Home() {
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Message</label>
-                  <textarea 
-                    name="message" 
-                    required 
-                    rows={5} 
+                  <textarea
+                    name="message"
+                    required
+                    rows={5}
                     placeholder="Tell us about your goals and how we can help..."
-                    className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent resize-none" 
+                    className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent resize-none"
                   />
                 </div>
 
@@ -702,11 +696,10 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={formStatus === "loading" || formStatus === "success"}
-                    className={`w-full py-4 rounded-full font-semibold text-white transition-all duration-300 ${
-                      formStatus === "success" 
-                        ? "bg-green-700 cursor-default" 
+                    className={`w-full py-4 rounded-full font-semibold text-white transition-all duration-300 ${formStatus === "success"
+                        ? "bg-green-700 cursor-default"
                         : "bg-crimson hover:bg-crimsonDark shadow-lg hover:shadow-xl shadow-crimson/20"
-                    }`}
+                      }`}
                   >
                     {formStatus === "loading" ? (
                       <span className="flex items-center justify-center gap-2">

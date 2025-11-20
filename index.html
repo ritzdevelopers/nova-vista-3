@@ -20,8 +20,8 @@
               gold: "#D4AF37"
             },
             fontFamily: {
-              serif: ["'Poppins'", "sans-serif"],
-              sans: ["'Poppins'", "system-ui", "sans-serif"]
+              serif: ["'Canela'", "'Poppins'", "serif"],
+              sans: ["'GT America'", "'Poppins'", "system-ui", "sans-serif"]
             },
             boxShadow: {
               editorial: "0 20px 45px rgba(15, 23, 42, 0.08)"
@@ -31,12 +31,71 @@
       }
     </script>
     <style>
+      /* Canela Bold Font for Headings */
+      @font-face {
+        font-family: 'Canela';
+        src: url('/canela-text-trial/CanelaText-Regular-Trial.otf') format('opentype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* GT America Regular Font for Paragraphs and Buttons */
+      @font-face {
+        font-family: 'GT America';
+        src: url('/gt/fonnts.com-GT_America_Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       body {
         @apply font-sans bg-parchment text-slateInk antialiased;
+        font-family: 'GT America', 'Poppins', system-ui, sans-serif !important;
       }
+      
+      /* Apply Canela Bold to all headings globally */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Canela', 'Poppins', serif !important;
+        font-weight: bold;
+      }
+      
       .section-heading {
         @apply text-4xl md:text-5xl font-serif tracking-tight text-slateInk;
+        font-family: 'Canela', 'Poppins', serif !important;
+        font-weight: bold;
       }
+      
+      /* Apply Canela Bold to navbar links */
+      nav a, header nav a, header nav Link {
+        font-family: 'Canela', 'Poppins', serif !important;
+        font-weight: bold;
+      }
+      
+      /* Apply Canela Bold to elements with font-serif class */
+      .font-serif {
+        font-family: 'Canela', 'Poppins', serif !important;
+        font-weight: bold;
+      }
+      
+      /* Apply GT America Regular to all paragraphs globally */
+      p {
+        font-family: 'GT America', 'Poppins', system-ui, sans-serif !important;
+        font-weight: normal;
+      }
+      
+      /* Apply GT America Regular to all buttons globally */
+      button, .btn, [type="button"], [type="submit"], [type="reset"] {
+        font-family: 'GT America', 'Poppins', system-ui, sans-serif !important;
+        font-weight: normal;
+      }
+      
+      /* Apply GT America Regular to elements with font-sans class */
+      .font-sans {
+        font-family: 'GT America', 'Poppins', system-ui, sans-serif !important;
+        font-weight: normal;
+      }
+      
       .kicker {
         @apply uppercase text-xs tracking-[0.35em] text-crimson font-semibold;
       }
