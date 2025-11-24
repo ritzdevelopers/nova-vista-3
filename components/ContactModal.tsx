@@ -13,6 +13,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     name: "",
     email: "",
     phone: "",
+    program: "",
     message: ""
   });
 
@@ -24,13 +25,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       email: formData.email,
       message: formData.message,
       phone: formData.phone,
-      program: "modal-inquiry"
+      program: formData.program || "General Inquiry"
     };
 
     try {
       await submitContactForm(payload);
       setFormStatus("success");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", program: "", message: "" });
       setTimeout(() => {
         setFormStatus("idle");
         onClose();
@@ -40,7 +41,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -124,7 +125,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <div className="pt-6 border-t border-white/20">
                       <p className="text-white/90 font-semibold mb-2">Get in Touch</p>
                       <p className="text-white/70 text-sm">+91 97735 09497</p>
-                      <p className="text-white/70 text-sm">ignitedbrains.india@gmail.com</p>
+                      <p className="text-white/70 text-sm">NovaVista.india@gmail.com</p>
                     </div>
                   </div>
                 </motion.div>
@@ -177,6 +178,26 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         placeholder="Enter your phone number (optional)"
                         className="w-full border-b-2 border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                       />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Select Program</label>
+                      <select
+                        name="program"
+                        value={formData.program}
+                        onChange={handleChange}
+                        className="w-full border-b-2 border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
+                      >
+                        <option value="">Select a program</option>
+                        <option value="Certificate Program">Certificate Program</option>
+                        <option value="Diploma Program">Diploma Program</option>
+                        <option value="Degree Program">Degree Program</option>
+                        <option value="Personality Development Workshop">Personality Development Workshop</option>
+                        <option value="Export Import & Documentation Workshop">Export Import & Documentation Workshop</option>
+                        <option value="Money Laundering & Act Workshop">Money Laundering & Act Workshop</option>
+                        <option value="MBBS Admissions">MBBS Admissions</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                      </select>
                     </div>
 
                     <div className="space-y-2">

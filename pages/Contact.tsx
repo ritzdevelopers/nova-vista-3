@@ -86,6 +86,16 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Phone Number</label>
+                <input 
+                  name="phone" 
+                  type="tel" 
+                  placeholder="+91 97735 09497" 
+                  className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent" 
+                />
+              </div>
+
+              <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Program of Interest</label>
                 <select 
                   name="program" 

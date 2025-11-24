@@ -202,24 +202,24 @@ export default function Home() {
       />
 
       {/* About Nova Vista Section */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="max-w-4xl mx-auto text-center mb-16"
+            className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">About Nova Vista</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-            <p className="text-lg md:text-xl text-slateInk/80 leading-relaxed mb-8">
-              IgnitedBrains is a global organisation that designs and implements national or international education strategies and program services. We work with governments, policymakers, educators, and employers across the globe to prepare students and professionals for the global workforce. We also create initiatives that assist students, scholars, and expand teaching and learning across cultures; and provide opportunities to promote educational equities and exchange of knowledge.
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">About Nova Vista</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
+            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0">
+              NovaVista is a global organisation that designs and implements national or international education strategies and program services. We work with governments, policymakers, educators, and employers across the globe to prepare students and professionals for the global workforce. We also create initiatives that assist students, scholars, and expand teaching and learning across cultures; and provide opportunities to promote educational equities and exchange of knowledge.
             </p>
           </motion.div>
 
           {/* Image Gallery */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16">
             {[1, 2, 3].map((i) => (
               <motion.div
                 key={i}
@@ -232,7 +232,7 @@ export default function Home() {
                 <img
                   src={`https://picsum.photos/600/400?random=${i}`}
                   alt={`About Nova Vista ${i}`}
-                  className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </motion.div>
             ))}
@@ -241,9 +241,9 @@ export default function Home() {
       </section>
 
       {/* Our Vision Section */}
-      <section id="vision" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="vision" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
             {/* Left Side - Image */}
             <motion.div
               className="relative order-2 lg:order-1"
@@ -255,7 +255,7 @@ export default function Home() {
               <img
                 src="https://picsum.photos/800/600?random=4"
                 alt="Our Vision"
-                className="rounded-2xl shadow-lg w-full h-[500px] object-cover"
+                className="rounded-2xl shadow-lg w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] object-cover"
               />
             </motion.div>
 
@@ -267,10 +267,10 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">Our Vision</h2>
-              <div className="h-1 w-20 bg-crimson mb-8"></div>
-              <p className="text-lg md:text-xl text-slateInk/80 leading-relaxed mb-6">
-                IgnitedBrains is not for profit trust established to help students from all strata of society to get high quality education. We have been collaborating & organizing several programs and initiates for promoting the education at national & international level. The only and ultimate aim of an individual is to get employed. For making the individual employable, IgnitedBrains have collaborated with National and international universities for certification in skill-oriented courses.
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">Our Vision</h2>
+              <div className="h-1 w-16 sm:w-20 bg-crimson mb-4 sm:mb-6 md:mb-8"></div>
+              <p className="text-base sm:text-lg md:text-xl text-slateInk/80 leading-relaxed mb-4 sm:mb-6">
+                NovaVista is not for profit trust established to help students from all strata of society to get high quality education. We have been collaborating & organizing several programs and initiates for promoting the education at national & international level. The only and ultimate aim of an individual is to get employed. For making the individual employable, NovaVista have collaborated with National and international universities for certification in skill-oriented courses.
               </p>
             </motion.div>
           </div>
@@ -278,30 +278,30 @@ export default function Home() {
       </section>
 
       {/* Online Admission Section */}
-      <section id="admission" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="admission" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">Online Admission/Registration for Certificate, Diploma & Degree</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-            <p className="text-lg md:text-xl text-slateInk/80 max-w-3xl mx-auto mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">Online Admission for Certificate, Diploma & Degree</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
+            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-3xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0">
               Start your educational journey with us. Register online for our comprehensive certificate, diploma, and degree programs.
             </p>
             <button
               onClick={openModal}
-              className="inline-flex items-center px-10 py-4 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+              className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
             >
               Get Started →
             </button>
           </motion.div>
 
           {/* Image Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             <motion.div
               className="relative overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 20 }}
@@ -333,18 +333,18 @@ export default function Home() {
       </section>
 
       {/* Our Services Section */}
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="services" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">OUR SERVICES</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-            <p className="text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">OUR SERVICES</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
+            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto px-2 sm:px-0">
               Delivering global education solutions that empower learners, support policymakers, strengthen institutions, and drive equitable, cross-cultural growth through innovative programs and strategic partnerships.
             </p>
           </motion.div>
@@ -366,11 +366,11 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-serif text-slateInk mb-3 group-hover:text-crimson transition-colors">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-2 sm:mb-3 group-hover:text-crimson transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-slateInk/70 text-sm leading-relaxed">
+                  <p className="text-slateInk/70 text-xs sm:text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -381,24 +381,24 @@ export default function Home() {
       </section>
 
       {/* Workshops Section */}
-      <section id="workshops" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="workshops" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">WORKSHOPS</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">WORKSHOPS</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
           </motion.div>
 
-          <div className="space-y-16">
+          <div className="space-y-8 sm:space-y-12 md:space-y-16">
             {workshops.map((workshop, index) => (
               <motion.div
                 key={index}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                className={`grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -409,27 +409,27 @@ export default function Home() {
                     <img
                       src={workshop.image}
                       alt={workshop.title}
-                      className="w-full h-[400px] object-cover"
+                      className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-crimson text-white px-4 py-2 rounded-lg font-semibold">
+                    <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-crimson text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm">
                       {workshop.duration}
                     </div>
                   </div>
                 </div>
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-4">{workshop.title}</h3>
-                  <div className="h-1 w-16 bg-crimson mb-6"></div>
-                  <div className="grid md:grid-cols-2 gap-3 mb-6">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-slateInk mb-3 sm:mb-4">{workshop.title}</h3>
+                  <div className="h-1 w-12 sm:w-16 bg-crimson mb-4 sm:mb-6"></div>
+                  <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
                     {workshop.topics.map((topic, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="text-crimson text-lg mt-1">•</span>
-                        <span className="text-slateInk/80 text-sm">{topic}</span>
+                        <span className="text-crimson text-base sm:text-lg mt-1">•</span>
+                        <span className="text-slateInk/80 text-xs sm:text-sm">{topic}</span>
                       </div>
                     ))}
                   </div>
                   <button
                     onClick={openModal}
-                    className="inline-flex items-center px-6 py-3 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-sm"
+                    className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-xs sm:text-sm"
                   >
                     Register Now →
                   </button>
@@ -441,37 +441,37 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="testimonials" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">TRUSTED BY STUDENTS & INDUSTRY EXPERTS</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">TRUSTED BY STUDENTS & INDUSTRY EXPERTS</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
           </motion.div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 max-w-4xl mx-auto">
             <motion.div
               key={testimonialIndex}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-start gap-6 mb-6">
+              <div className="flex items-start gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6">
                 <div className="flex-shrink-0">
                   <img
                     src={`https://picsum.photos/100/100?random=${testimonialIndex + 50}`}
                     alt={testimonials[testimonialIndex].author}
-                    className="w-20 h-20 rounded-full object-cover"
+                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full object-cover"
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="text-4xl md:text-5xl font-serif text-slateInk/20 mb-4">"</p>
-                  <p className="text-lg md:text-xl text-slateInk/80 leading-relaxed mb-6">
+                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk/20 mb-2 sm:mb-4">"</p>
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slateInk/80 leading-relaxed mb-4 sm:mb-6">
                     {testimonials[testimonialIndex].quote}
                   </p>
                   <div>
@@ -483,7 +483,7 @@ export default function Home() {
             </motion.div>
 
             {/* Navigation Dots */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-2 mt-4 sm:mt-6 md:mt-8">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -498,39 +498,44 @@ export default function Home() {
 
           {/* Info Bar */}
           <motion.div
-            className="mt-8 bg-slate-50 rounded-lg p-4 max-w-4xl mx-auto flex items-center justify-between flex-wrap gap-4"
+            className="mt-4 sm:mt-6 md:mt-8 bg-slate-50 rounded-lg p-3 sm:p-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3">
-              <span className="text-2xl">ℹ️</span>
+              <span className="text-2xl text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4m0-4h.01" />
+                </svg>
+              </span>
               <span className="text-slateInk/70">For cost, venue, date and any other query</span>
             </div>
-            <button
-              onClick={openModal}
-              className="px-6 py-2 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-sm"
+            <Link
+              to="/contact"
+              className="px-4 sm:px-6 py-2 bg-crimson text-white rounded-full hover:bg-crimsonDark transition-colors font-semibold text-xs sm:text-sm w-full sm:w-auto inline-block text-center"
             >
               Contact Us →
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
 
       {/* Leadership Section */}
-      <section id="leadership" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="leadership" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">LEADERSHIP</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
-            <p className="text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">LEADERSHIP</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
+            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto px-2 sm:px-0">
               Leading global education transformation through strategic collaboration, innovative programs, and inclusive initiatives that empower learners and strengthen workforce readiness across nations.
             </p>
           </motion.div>
@@ -552,10 +557,10 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-serif text-slateInk mb-2">{member.name}</h3>
-                  <p className="text-crimson font-semibold mb-1">{member.role}</p>
-                  <p className="text-slateInk/60 text-sm">{member.location}</p>
+                <div className="p-4 sm:p-5 md:p-6 text-center">
+                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-1 sm:mb-2">{member.name}</h3>
+                  <p className="text-crimson font-semibold mb-1 text-sm sm:text-base">{member.role}</p>
+                  <p className="text-slateInk/60 text-xs sm:text-sm">{member.location}</p>
                 </div>
               </motion.div>
             ))}
@@ -564,7 +569,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white">
+      <section id="contact" className="py-24 bg-white hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-16"
@@ -698,7 +703,7 @@ export default function Home() {
                   <span className="text-2xl">📧</span>
                   <div>
                     <p className="text-xs uppercase tracking-[0.2em] text-slateInk/50 mb-1">Email</p>
-                    <p className="text-lg text-slateInk font-medium">ignitedbrains.india@gmail.com</p>
+                    <p className="text-lg text-slateInk font-medium">NovaVista.india@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -716,25 +721,26 @@ export default function Home() {
       </section>
 
       {/* Our Offices Section */}
-      <section id="offices" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="offices" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">Our Offices</h2>
-            <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">Our Offices</h2>
+            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
               { country: "India", address: "B37, Lajpat Nagar-2, New Delhi, 110024", image: "https://picsum.photos/600/400?random=50" },
               { country: "Germany", address: "Truderinger Strasse 206 Munich, 81825", image: "https://picsum.photos/600/400?random=51" },
               { country: "USA", address: "3314 Windridge Ave, Thousand Oaks, CA, 91362", image: "https://picsum.photos/600/400?random=52" },
               { country: "Bangladesh", address: "Shimanto Square Market, Shope no. 262, 2nd Floor, Dhanmondi, Dhaka.", image: "https://picsum.photos/600/400?random=53" },
+              { country: "Qatar", address: "Jabir Ibn Hayyan Street, Abu Dhabi, 110786", image: "https://picsum.photos/600/400?random=59" },
               { country: "Nepal", address: "Baluwatar 4 Kathmandu Nepal – 44616", image: "https://picsum.photos/600/400?random=54" }
             ].map((office, index) => (
               <motion.div
@@ -752,9 +758,9 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-serif text-slateInk mb-3">{office.country}</h3>
-                  <p className="text-slateInk/70 text-sm leading-relaxed">{office.address}</p>
+                <div className="p-4 sm:p-5 md:p-6">
+                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-2 sm:mb-3">{office.country}</h3>
+                  <p className="text-slateInk/70 text-xs sm:text-sm leading-relaxed">{office.address}</p>
                 </div>
               </motion.div>
             ))}

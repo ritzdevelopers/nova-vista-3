@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { fetchMeta } from "../services/api";
@@ -8,6 +8,10 @@ export default function Layout() {
   const [meta, setMeta] = useState<MetaData | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [contactDropdownOpen, setContactDropdownOpen] = useState(false);
+  const aboutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const contactTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -47,17 +51,18 @@ export default function Layout() {
     }
   };
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About Nova Vista Education", href: "/#about" },
+  // About Us dropdown items
+  const aboutDropdownItems = [
     { label: "Our Vision", href: "/#vision" },
-    { label: "Online Admission", href: "/#admission" },
-    { label: "Our Services", href: "/#services" },
-    { label: "Workshops", href: "/#workshops" },
-    { label: "Testimonials", href: "/#testimonials" },
     { label: "Leadership", href: "/#leadership" },
-    { label: "Contact Us", href: "/#contact" },
+    { label: "Workshop", href: "/#workshops" },
+    { label: "About Nova Vista Education", href: "/#about" },
+  ];
+
+  // Contact Us dropdown items
+  const contactDropdownItems = [
     { label: "Our Offices", href: "/#offices" },
+    { label: "Get Connect", href: "/contact" },
   ];
 
   return (
@@ -85,38 +90,162 @@ export default function Layout() {
             <img 
               src="/nova-logo-1.png" 
               alt="Nova Vista Education" 
-              className="h-12 md:h-16 lg:h-16
-               w-auto object-contain"
+              className="h-12 md:h-16 lg:h-16 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
-            {navLinks.map((link) => (
-              link.href.startsWith('/#') ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap"
+            {/* About Us Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => {
+                if (aboutTimeoutRef.current) {
+                  clearTimeout(aboutTimeoutRef.current);
+                  aboutTimeoutRef.current = null;
+                }
+                setAboutDropdownOpen(true);
+              }}
+              onMouseLeave={() => {
+                aboutTimeoutRef.current = setTimeout(() => {
+                  setAboutDropdownOpen(false);
+                }, 200);
+              }}
+            >
+              <button className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap flex items-center gap-1">
+                About Us
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {aboutDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  onMouseEnter={() => {
+                    if (aboutTimeoutRef.current) {
+                      clearTimeout(aboutTimeoutRef.current);
+                      aboutTimeoutRef.current = null;
+                    }
+                    setAboutDropdownOpen(true);
+                  }}
+                  onMouseLeave={() => {
+                    aboutTimeoutRef.current = setTimeout(() => {
+                      setAboutDropdownOpen(false);
+                    }, 200);
+                  }}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-100 py-2 z-50"
                 >
-                  {link.label}
-                </a>
-              ) : (
-                <Link 
-                  key={link.label} 
-                  to={link.href} 
-                  className={`text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider whitespace-nowrap ${
-                    location.pathname === link.href ? "text-crimson" : "text-slateInk/70 hover:text-crimson"
-                  }`}
+                  {aboutDropdownItems.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={(e) => {
+                        handleNavClick(e, item.href);
+                        setAboutDropdownOpen(false);
+                      }}
+                      className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+
+            {/* Online Admission */}
+            <a
+              href="/#admission"
+              onClick={(e) => handleNavClick(e, '/#admission')}
+              className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap"
+            >
+              Online Admission
+            </a>
+
+            {/* Our Services */}
+            <a
+              href="/#services"
+              onClick={(e) => handleNavClick(e, '/#services')}
+              className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap"
+            >
+              Our Services
+            </a>
+
+            {/* Contact Us Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => {
+                if (contactTimeoutRef.current) {
+                  clearTimeout(contactTimeoutRef.current);
+                  contactTimeoutRef.current = null;
+                }
+                setContactDropdownOpen(true);
+              }}
+              onMouseLeave={() => {
+                contactTimeoutRef.current = setTimeout(() => {
+                  setContactDropdownOpen(false);
+                }, 800);
+              }}
+            >
+              <button className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap flex items-center gap-1">
+                Contact Us
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {contactDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  onMouseEnter={() => {
+                    if (contactTimeoutRef.current) {
+                      clearTimeout(contactTimeoutRef.current);
+                      contactTimeoutRef.current = null;
+                    }
+                    setContactDropdownOpen(true);
+                  }}
+                  onMouseLeave={() => {
+                    contactTimeoutRef.current = setTimeout(() => {
+                      setContactDropdownOpen(false);
+                    }, 800);
+                  }}
+                  className="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 py-2 z-50"
                 >
-                  {link.label}
-                </Link>
-              )
-            ))}
-            <Link 
-              to="/#contact" 
-              onClick={(e) => handleNavClick(e, '/#contact')}
+                  {contactDropdownItems.map((item) => (
+                    item.href.startsWith('/#') ? (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={(e) => {
+                          handleNavClick(e, item.href);
+                          setContactDropdownOpen(false);
+                        }}
+                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => setContactDropdownOpen(false)}
+                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    )
+                  ))}
+                </motion.div>
+              )}
+            </div>
+
+            {/* Apply Now Button */}
+            <Link
+              to="/contact"
               className="px-4 xl:px-6 py-2 xl:py-2.5 bg-crimson text-white text-xs xl:text-sm font-semibold rounded-full hover:bg-crimsonDark transition-colors shadow-lg shadow-crimson/20 whitespace-nowrap"
             >
               Apply Now
@@ -147,27 +276,88 @@ export default function Layout() {
             className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                link.href.startsWith('/#') ? (
+              <Link 
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-serif text-slateInk hover:text-crimson"
+              >
+                Home
+              </Link>
+              
+              <div className="space-y-2">
+                <p className="text-lg font-serif text-slateInk font-semibold">About Us</p>
+                {aboutDropdownItems.map((item) => (
                   <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-lg font-serif text-slateInk hover:text-crimson"
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleNavClick(e, item.href);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
                   >
-                    {link.label}
+                    {item.label}
                   </a>
-                ) : (
-                  <Link 
-                    key={link.label} 
-                    to={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg font-serif text-slateInk hover:text-crimson"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              ))}
+                ))}
+              </div>
+
+              <a
+                href="/#admission"
+                onClick={(e) => {
+                  handleNavClick(e, '/#admission');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-lg font-serif text-slateInk hover:text-crimson"
+              >
+                Online Admission
+              </a>
+
+              <a
+                href="/#services"
+                onClick={(e) => {
+                  handleNavClick(e, '/#services');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-lg font-serif text-slateInk hover:text-crimson"
+              >
+                Our Services
+              </a>
+
+              <div className="space-y-2">
+                <p className="text-lg font-serif text-slateInk font-semibold">Contact Us</p>
+                {contactDropdownItems.map((item) => (
+                  item.href.startsWith('/#') ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={(e) => {
+                        handleNavClick(e, item.href);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                ))}
+              </div>
+
+              <Link
+                to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-2 bg-crimson text-white text-sm font-semibold rounded-full hover:bg-crimsonDark transition-colors text-center"
+              >
+                Apply Now
+              </Link>
             </nav>
           </motion.div>
         )}
@@ -207,7 +397,6 @@ export default function Layout() {
               <li><a href="/#admission" onClick={(e) => handleNavClick(e, '/#admission')} className="hover:text-white transition-colors">Online Admission</a></li>
               <li><a href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-white transition-colors">Our Services</a></li>
               <li><a href="/#workshops" onClick={(e) => handleNavClick(e, '/#workshops')} className="hover:text-white transition-colors">Workshops</a></li>
-              <li><a href="/#testimonials" onClick={(e) => handleNavClick(e, '/#testimonials')} className="hover:text-white transition-colors">Testimonials</a></li>
               <li><a href="/#leadership" onClick={(e) => handleNavClick(e, '/#leadership')} className="hover:text-white transition-colors">Leadership</a></li>
               <li><a href="/#offices" onClick={(e) => handleNavClick(e, '/#offices')} className="hover:text-white transition-colors">Our Offices</a></li>
             </ul>
@@ -222,8 +411,8 @@ export default function Layout() {
               <span className="text-white/20">·</span>
               <a href="#" className="text-white/60 hover:text-white transition-colors">X (Twitter)</a>
             </div>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="inline-block px-6 py-2 border border-white/20 rounded-full text-sm hover:bg-white hover:text-slateInk transition-all"
             >
               Contact Us
