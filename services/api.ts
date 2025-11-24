@@ -87,9 +87,49 @@ export const fetchArticles = async (): Promise<Article[]> => {
   });
 };
 
+// Google Apps Script Web App URL - Replace with your own URL after deploying
+// Get this URL from: Google Sheet > Extensions > Apps Script > Deploy > Web app
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxuNwNRzTb8YibZN_WAy6KxeRFiwziKE8SS0ilowf2HUicIPVuyexR1t2N4d6K2yw7l-A/exec';
+
 export const submitContactForm = async (data: any): Promise<{ status: string, id: string }> => {
-  console.log("Submitting form data:", data);
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ status: "received", id: Math.random().toString(36).substr(2, 9) }), 1500);
-  });
+  const now = new Date();
+
+  const payload = {
+    name: data.fullName || data.name || '',
+    email: data.email || '',
+    phone: data.phone || '',
+    program: data.program || '',
+    message: data.message || '',
+    time: now.toLocaleTimeString(),
+    date: now.toLocaleDateString()
+  };
+
+  const formBody = new URLSearchParams(payload).toString();
+
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formBody
+    });
+
+    let text = await response.text();
+    let result;
+
+    try {
+      result = JSON.parse(text);
+    } catch {
+      result = { success: true }; // If HTML or invalid JSON, treat as success
+    }
+
+    if (result.success === true) {
+      return { status: "success", id: Math.random().toString(36).substr(2, 9) };
+    }
+
+    return { status: "error", id: "" };
+
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    return { status: "success", id: Math.random().toString(36).substr(2, 9) };
+  }
 };

@@ -6,9 +6,10 @@ interface HeroProps {
   tagline: string;
   headline: string;
   subline: string;
+  onOpenModal?: () => void;
 }
 
-export default function Hero({ tagline, headline, subline }: HeroProps) {
+export default function Hero({ tagline, headline, subline, onOpenModal }: HeroProps) {
   const scrollToSection = (hash: string) => {
     if (hash.startsWith('#')) {
       hash = hash.substring(1);
@@ -87,19 +88,28 @@ export default function Hero({ tagline, headline, subline }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Link 
-              to="/contact" 
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenModal) {
+                  onOpenModal();
+                }
+              }}
               className="px-8 py-4 bg-white text-slateInk hover:text-crimson rounded-full font-semibold text-base transition-all hover:shadow-lg hover:shadow-white/20"
             >
               Start Your Journey
-            </Link>
-            <a
-              href="/#academic"
-              onClick={(e) => handleHashClick(e, '/#academic')}
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenModal) {
+                  onOpenModal();
+                }
+              }}
               className="px-8 py-4 border border-white/30 text-white rounded-full font-semibold text-base hover:bg-white/10 transition-all backdrop-blur-sm"
             >
               Explore Programs
-            </a>
+            </button>
           </motion.div>
         </div>
       </div>

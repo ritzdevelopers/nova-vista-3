@@ -49,10 +49,15 @@ export default function Layout() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
-    { label: "Academic Recognition", href: "/#academic" },
-    { label: "Personality Development", href: "/#personality" },
-    { label: "Contact", href: "/contact" },
+    { label: "About Ignited Brains", href: "/#about" },
+    { label: "Our Vision", href: "/#vision" },
+    { label: "Online Admission", href: "/#admission" },
+    { label: "Our Services", href: "/#services" },
+    { label: "Workshops", href: "/#workshops" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "Leadership", href: "/#leadership" },
+    { label: "Contact Us", href: "/#contact" },
+    { label: "Our Offices", href: "/#offices" },
   ];
 
   return (
@@ -86,14 +91,14 @@ export default function Layout() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => (
               link.href.startsWith('/#') ? (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson"
+                  className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -101,7 +106,7 @@ export default function Layout() {
                 <Link 
                   key={link.label} 
                   to={link.href} 
-                  className={`text-sm font-medium transition-colors uppercase tracking-wider ${
+                  className={`text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider whitespace-nowrap ${
                     location.pathname === link.href ? "text-crimson" : "text-slateInk/70 hover:text-crimson"
                   }`}
                 >
@@ -110,8 +115,9 @@ export default function Layout() {
               )
             ))}
             <Link 
-              to="/contact" 
-              className="px-6 py-2.5 bg-crimson text-white text-sm font-semibold rounded-full hover:bg-crimsonDark transition-colors shadow-lg shadow-crimson/20"
+              to="/#contact" 
+              onClick={(e) => handleNavClick(e, '/#contact')}
+              className="px-4 xl:px-6 py-2 xl:py-2.5 bg-crimson text-white text-xs xl:text-sm font-semibold rounded-full hover:bg-crimsonDark transition-colors shadow-lg shadow-crimson/20 whitespace-nowrap"
             >
               Apply Now
             </Link>
@@ -194,11 +200,16 @@ export default function Layout() {
           </div>
 
           <div>
-            <p className="kicker text-white/40 mb-6">Programs</p>
+            <p className="kicker text-white/40 mb-6">Quick Links</p>
             <ul className="space-y-3 text-sm text-white/70">
-              <li><a href="/#academic" onClick={(e) => handleNavClick(e, '/#academic')} className="hover:text-white transition-colors">Academic Recognition</a></li>
-              <li><a href="/#personality" onClick={(e) => handleNavClick(e, '/#personality')} className="hover:text-white transition-colors">Personality Development</a></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Admissions</Link></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="hover:text-white transition-colors">About Ignited Brains</a></li>
+              <li><a href="/#vision" onClick={(e) => handleNavClick(e, '/#vision')} className="hover:text-white transition-colors">Our Vision</a></li>
+              <li><a href="/#admission" onClick={(e) => handleNavClick(e, '/#admission')} className="hover:text-white transition-colors">Online Admission</a></li>
+              <li><a href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-white transition-colors">Our Services</a></li>
+              <li><a href="/#workshops" onClick={(e) => handleNavClick(e, '/#workshops')} className="hover:text-white transition-colors">Workshops</a></li>
+              <li><a href="/#testimonials" onClick={(e) => handleNavClick(e, '/#testimonials')} className="hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="/#leadership" onClick={(e) => handleNavClick(e, '/#leadership')} className="hover:text-white transition-colors">Leadership</a></li>
+              <li><a href="/#offices" onClick={(e) => handleNavClick(e, '/#offices')} className="hover:text-white transition-colors">Our Offices</a></li>
             </ul>
           </div>
 
