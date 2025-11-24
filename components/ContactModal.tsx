@@ -88,7 +88,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   transition={{ delay: 0.2 }}
                   className="relative z-10"
                 >
-                  <h2 className="text-3xl md:text-4xl font-serif mb-6">Start Your Journey with Ignited Brains</h2>
+                  <h2 className="text-3xl md:text-4xl font-serif mb-6">Start Your Journey with Nova Vista Education</h2>
                   <div className="h-1 w-20 bg-crimson mb-8"></div>
                   
                   <div className="space-y-6 mb-8">

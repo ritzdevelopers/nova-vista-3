@@ -49,7 +49,7 @@ export default function Layout() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "About Ignited Brains", href: "/#about" },
+    { label: "About Nova Vista Education", href: "/#about" },
     { label: "Our Vision", href: "/#vision" },
     { label: "Online Admission", href: "/#admission" },
     { label: "Our Services", href: "/#services" },
@@ -202,7 +202,7 @@ export default function Layout() {
           <div>
             <p className="kicker text-white/40 mb-6">Quick Links</p>
             <ul className="space-y-3 text-sm text-white/70">
-              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="hover:text-white transition-colors">About Ignited Brains</a></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="hover:text-white transition-colors">About Nova Vista Education</a></li>
               <li><a href="/#vision" onClick={(e) => handleNavClick(e, '/#vision')} className="hover:text-white transition-colors">Our Vision</a></li>
               <li><a href="/#admission" onClick={(e) => handleNavClick(e, '/#admission')} className="hover:text-white transition-colors">Online Admission</a></li>
               <li><a href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-white transition-colors">Our Services</a></li>
