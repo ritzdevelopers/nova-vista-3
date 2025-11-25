@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Hero from "../components/Hero";
 import ContactModal from "../components/ContactModal";
-import { fetchPrograms, fetchMeta, fetchArticles, submitContactForm } from "../services/api";
+import {
+  fetchPrograms,
+  fetchMeta,
+  fetchArticles,
+  submitContactForm,
+} from "../services/api";
 import { Program, MetaData, Article } from "../types";
 import { Link } from "react-router-dom";
 
@@ -10,7 +15,9 @@ export default function Home() {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [meta, setMeta] = useState<MetaData | null>(null);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,11 +29,11 @@ export default function Home() {
 
   // Auto-open modal after 5 seconds on first visit
   useEffect(() => {
-    const hasSeenModal = localStorage.getItem('hasSeenContactModal');
+    const hasSeenModal = localStorage.getItem("hasSeenContactModal");
     if (!hasSeenModal) {
       const timer = setTimeout(() => {
         setIsModalOpen(true);
-        localStorage.setItem('hasSeenContactModal', 'true');
+        localStorage.setItem("hasSeenContactModal", "true");
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -45,11 +52,12 @@ export default function Home() {
     if (element) {
       const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -59,7 +67,7 @@ export default function Home() {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash) {
-        const id = hash.replace('#', '');
+        const id = hash.replace("#", "");
         setTimeout(() => scrolltToSection(id), 100);
       }
     };
@@ -70,10 +78,10 @@ export default function Home() {
     }
 
     // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, [programs]);
 
@@ -94,58 +102,36 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "We strongly recommend Training from Prof Dr Gandhi. If you're reading this and are currently back and forth on signing up for classes - just do it! You'll be glad you did.",
+      quote:
+        "We strongly recommend Training from Prof Dr Gandhi. If you're reading this and are currently back and forth on signing up for classes - just do it! You'll be glad you did.",
       author: "Super International Exporters",
-      position: "Delhi"
+      position: "Delhi",
     },
     {
-      quote: "We have used the Institute's training, where we have booked and attended courses run by them, which have all been very well received by the individuals that have attended.",
+      quote:
+        "We have used the Institute's training, where we have booked and attended courses run by them, which have all been very well received by the individuals that have attended.",
       author: "Sam Anthony",
-      position: "CEO, Allied Overseas, Mumbai"
+      position: "CEO, Allied Overseas, Mumbai",
     },
     {
-      quote: "Presentation Skill and Subject knowledge are excellent. willingness to solve our problems deserve a lot of appreciation.",
+      quote:
+        "Presentation Skill and Subject knowledge are excellent. willingness to solve our problems deserve a lot of appreciation.",
       author: "Paramjeet Singh",
-      position: "Delhi"
+      position: "Delhi",
     },
     {
-      quote: "I cannot say enough nice things about Prof Gandhi. He is personable, professional and extremely knowledgeable",
+      quote:
+        "I cannot say enough nice things about Prof Gandhi. He is personable, professional and extremely knowledgeable",
       author: "Salah Bin Zaal",
-      position: "Dubai"
-    }
+      position: "Dubai",
+    },
   ];
 
-  const services = [
-    {
-      title: "Join Ventures, Collaboration & Tieups",
-      image: "/s2/s2-i1.jpg",
-      description: "Building strategic partnerships and collaborations with educational institutions worldwide."
-    },
-    {
-      title: "Establishment of School/Colleges/Universities & Off-Shore Campuses",
-      image: "/s2/s2-i2.jpg",
-      description: "Supporting the establishment and development of educational institutions globally."
-    },
-    {
-      title: "Training and Development Programs for faculty & corporate",
-      image: "https://picsum.photos/600/400?random=10",
-      description: "Comprehensive training programs designed for educators and corporate professionals."
-    },
-    {
-      title: "Counselings and Recruitment of Student from Abroad",
-      image: "https://picsum.photos/600/400?random=11",
-      description: "Expert guidance and support for international student recruitment and counseling."
-    },
-    {
-      title: "Twinning, Exchange and dual certification program",
-      image: "https://picsum.photos/600/400?random=12",
-      description: "Facilitating international exchange programs and dual certification opportunities."
-    },
-    {
-      title: "Admissions for MBBS for the Medical Colleges of Bangladesh & Russia",
-      image: "https://picsum.photos/600/400?random=13",
-      description: "Specialized admission services for medical programs in Bangladesh and Russia."
-    }
+  const testimonialImages = [
+    "https://i.pinimg.com/736x/77/96/87/779687b663cf7b4f443d48fc46d0ddc1.jpg",
+    "https://i.pinimg.com/736x/11/db/c9/11dbc924f91ce295e49e2f802a678438.jpg",
+    "https://i.pinimg.com/736x/f6/71/8e/f6718e9bce09e2ae1c3f3dd3299c5107.jpg",
+    "https://i.pinimg.com/736x/32/25/cc/3225cc8e4f5ae372d2c6c1aa380d233e.jpg",
   ];
 
   const workshops = [
@@ -153,50 +139,61 @@ export default function Home() {
       title: "Personality Development for employability",
       duration: "2 Days Workshop (Both Online & Offline)",
       topics: [
-        "Presentation Skills", "Communication Skills", "Interpersonal Skills", 
-        "Work Place Etiquette", "Meeting/Telephone/Group Etiquette", "Body Language", 
-        "Self Confidence", "Positive Attitude", "Self-Motivation", 
-        "Powerful Presentation Techniques", "Time management", "Voice modulation", 
-        "Stress Management", "Creative Thinking", "Executive Corporate Attire"
+        "Presentation Skills",
+        "Communication Skills",
+        "Interpersonal Skills",
+        "Work Place Etiquette",
+        "Meeting/Telephone/Group Etiquette",
+        "Body Language",
+        "Self Confidence",
+        "Positive Attitude",
+        "Self-Motivation",
+        "Powerful Presentation Techniques",
+        "Time management",
+        "Voice modulation",
+        "Stress Management",
+        "Creative Thinking",
+        "Executive Corporate Attire",
       ],
-      image: "https://picsum.photos/800/600?random=20"
+      image: "https://i.pinimg.com/736x/b2/29/bd/b229bd20894fabecd61ea904bfd4b584.jpg",
     },
     {
       title: "Export Import & Documentation Workshop",
       duration: "2 Days Workshop",
       topics: [
-        "Important Steps for Starters", "Role of Government Agencies", "Export Marketing", 
-        "Export & Import", "Export-Import Documentation", "Payment Terms/Incoterms", 
-        "Methods of Financing", "Process of an Export Order", "Containerization & Transportation"
+        "Important Steps for Starters",
+        "Role of Government Agencies",
+        "Export Marketing",
+        "Export & Import",
+        "Export-Import Documentation",
+        "Payment Terms/Incoterms",
+        "Methods of Financing",
+        "Process of an Export Order",
+        "Containerization & Transportation",
       ],
-      image: "https://picsum.photos/800/600?random=21"
+      image: "https://i.pinimg.com/736x/a5/07/78/a5077813dd34a5e7f73d9e74d1e86fea.jpg",
     },
     {
       title: "Money Laundering & Act",
       duration: "2 Days Workshop",
       topics: [
-        "Concept of money laundering & how it works", "Stages and various forms of money laundering", 
-        "Social/economic/political impact", "Methods adopted for money laundering", 
-        "Role of government agencies", "Money laundering act", "Case studies"
+        "Concept of money laundering & how it works",
+        "Stages and various forms of money laundering",
+        "Social/economic/political impact",
+        "Methods adopted for money laundering",
+        "Role of government agencies",
+        "Money laundering act",
+        "Case studies",
       ],
-      image: "https://picsum.photos/800/600?random=22"
-    }
-  ];
-
-  const leadership = [
-    { name: "Prof. Mahesh Gandhi", role: "President", location: "India", image: "https://picsum.photos/400/400?random=30" },
-    { name: "Shashank Jain", role: "Director", location: "Germany", image: "https://picsum.photos/400/400?random=31" },
-    { name: "Deepika Malik", role: "Director", location: "UAE", image: "https://picsum.photos/400/400?random=32" },
-    { name: "Ms. Benu Sehgal", role: "Director", location: "India", image: "https://picsum.photos/400/400?random=33" },
-    { name: "CA Deepak Kumar", role: "Director", location: "India", image: "https://picsum.photos/400/400?random=34" },
-    { name: "Naveen Kapoor", role: "Director", location: "USA", image: "https://picsum.photos/400/400?random=35" }
+      image: "https://i.pinimg.com/1200x/5a/61/dd/5a61dd65099d97c079ea2cf9acfcf482.jpg",
+    },
   ];
 
   return (
     <>
       <Hero
         tagline="Nova Vista – Education Beyond Boundaries"
-        headline="TRANSFORMING EDUCATION WORLDWIDE WITH STRATEGIC PROGRAMS AND MEANINGFUL GLOBAL PARTNERSHIPS"
+        headline="Empowering Growth. Elevating Futures."
         subline="A platform committed to academic recognition and personal skill enhancement."
         onOpenModal={openModal}
       />
@@ -211,26 +208,40 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">About Nova Vista</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">
+              About Nova Vista
+            </h2>
             <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
             <p className="text-base sm:text-lg md:text-xl text-slateInk/80 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0">
-              NovaVista is a global organisation that designs and implements national or international education strategies and program services. We work with governments, policymakers, educators, and employers across the globe to prepare students and professionals for the global workforce. We also create initiatives that assist students, scholars, and expand teaching and learning across cultures; and provide opportunities to promote educational equities and exchange of knowledge.
+              NovaVista is a global organisation that designs and implements
+              national or international education strategies and program
+              services. We work with governments, policymakers, educators, and
+              employers across the globe to prepare students and professionals
+              for the global workforce. We also create initiatives that assist
+              students, scholars, and expand teaching and learning across
+              cultures; and provide opportunities to promote educational
+              equities and exchange of knowledge.
             </p>
           </motion.div>
 
           {/* Image Gallery */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16">
-            {[1, 2, 3].map((i) => (
+            {[
+              "https://img.freepik.com/premium-photo/international-day-education_1028264-162.jpg",
+              "https://cdn.pixabay.com/photo/2023/05/07/06/56/ai-generated-7975784_1280.jpg",
+
+              "https://i.pinimg.com/originals/1a/0a/0d/1a0a0d559f88af6947e54bed62e08085.jpg",
+            ].map((i, idx) => (
               <motion.div
                 key={i}
                 className="relative group overflow-hidden rounded-2xl"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 <img
-                  src={`https://picsum.photos/600/400?random=${i}`}
+                  src={`${i}`}
                   alt={`About Nova Vista ${i}`}
                   className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -240,45 +251,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Vision Section */}
-      <section id="vision" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
-            {/* Left Side - Image */}
-            <motion.div
-              className="relative order-2 lg:order-1"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <img
-                src="https://picsum.photos/800/600?random=4"
-                alt="Our Vision"
-                className="rounded-2xl shadow-lg w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] object-cover"
-              />
-            </motion.div>
-
-            {/* Right Side - Content */}
-            <motion.div
-              className="order-1 lg:order-2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">Our Vision</h2>
-              <div className="h-1 w-16 sm:w-20 bg-crimson mb-4 sm:mb-6 md:mb-8"></div>
-              <p className="text-base sm:text-lg md:text-xl text-slateInk/80 leading-relaxed mb-4 sm:mb-6">
-                NovaVista is not for profit trust established to help students from all strata of society to get high quality education. We have been collaborating & organizing several programs and initiates for promoting the education at national & international level. The only and ultimate aim of an individual is to get employed. For making the individual employable, NovaVista have collaborated with National and international universities for certification in skill-oriented courses.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Online Admission Section */}
-      <section id="admission" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <section
+        id="admission"
+        className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-8 sm:mb-12 md:mb-16"
@@ -287,10 +264,13 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">Online Admission for Certificate, Diploma & Degree</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">
+              Online Admission for Certificate, Diploma & Degree
+            </h2>
             <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
             <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-3xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0">
-              Start your educational journey with us. Register online for our comprehensive certificate, diploma, and degree programs.
+              Start your educational journey with us. Register online for our
+              comprehensive certificate, diploma, and degree programs.
             </p>
             <button
               onClick={openModal}
@@ -310,7 +290,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="https://picsum.photos/800/500?random=5"
+                src="https://i.pinimg.com/736x/a8/c0/5d/a8c05d0cd6003f712622f64f081113f4.jpg"
                 alt="Online Admission"
                 className="w-full h-[400px] object-cover"
               />
@@ -323,7 +303,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <img
-                src="https://picsum.photos/800/500?random=6"
+                src="https://assets.thehansindia.com/h-upload/2023/07/07/1363284-scholarships.webp"
                 alt="Education Programs"
                 className="w-full h-[400px] object-cover"
               />
@@ -332,56 +312,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Services Section */}
-      <section id="services" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">OUR SERVICES</h2>
-            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
-            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto px-2 sm:px-0">
-              Delivering global education solutions that empower learners, support policymakers, strengthen institutions, and drive equitable, cross-cultural growth through innovative programs and strategic partnerships.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="relative overflow-hidden h-48">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-4 sm:p-5 md:p-6">
-                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-2 sm:mb-3 group-hover:text-crimson transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-slateInk/70 text-xs sm:text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Workshops Section */}
-      <section id="workshops" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <section
+        id="workshops"
+        className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-8 sm:mb-12 md:mb-16"
@@ -390,7 +325,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">WORKSHOPS</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">
+              WORKSHOPS
+            </h2>
             <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
           </motion.div>
 
@@ -398,13 +335,15 @@ export default function Home() {
             {workshops.map((workshop, index) => (
               <motion.div
                 key={index}
-                className={`grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                className={`grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="relative overflow-hidden rounded-2xl">
                     <img
                       src={workshop.image}
@@ -416,14 +355,20 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-slateInk mb-3 sm:mb-4">{workshop.title}</h3>
+                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-slateInk mb-3 sm:mb-4">
+                    {workshop.title}
+                  </h3>
                   <div className="h-1 w-12 sm:w-16 bg-crimson mb-4 sm:mb-6"></div>
                   <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
                     {workshop.topics.map((topic, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="text-crimson text-base sm:text-lg mt-1">•</span>
-                        <span className="text-slateInk/80 text-xs sm:text-sm">{topic}</span>
+                        <span className="text-crimson text-base sm:text-lg mt-1">
+                          •
+                        </span>
+                        <span className="text-slateInk/80 text-xs sm:text-sm">
+                          {topic}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -441,7 +386,10 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <section
+        id="testimonials"
+        className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-8 sm:mb-12 md:mb-16"
@@ -450,7 +398,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">TRUSTED BY STUDENTS & INDUSTRY EXPERTS</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-slateInk mb-4 sm:mb-6 px-2 sm:px-0">
+              TRUSTED BY STUDENTS & INDUSTRY EXPERTS
+            </h2>
             <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
           </motion.div>
 
@@ -464,19 +414,25 @@ export default function Home() {
               <div className="flex items-start gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6">
                 <div className="flex-shrink-0">
                   <img
-                    src={`https://picsum.photos/100/100?random=${testimonialIndex + 50}`}
+                    src={testimonialImages[testimonialIndex]}
                     alt={testimonials[testimonialIndex].author}
-                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full object-cover"
+                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full object-cover object-center"
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk/20 mb-2 sm:mb-4">"</p>
+                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk/20 mb-2 sm:mb-4">
+                    "
+                  </p>
                   <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slateInk/80 leading-relaxed mb-4 sm:mb-6">
                     {testimonials[testimonialIndex].quote}
                   </p>
                   <div>
-                    <p className="font-semibold text-slateInk">{testimonials[testimonialIndex].author}</p>
-                    <p className="text-slateInk/60 text-sm">{testimonials[testimonialIndex].position}</p>
+                    <p className="font-semibold text-slateInk">
+                      {testimonials[testimonialIndex].author}
+                    </p>
+                    <p className="text-slateInk/60 text-sm">
+                      {testimonials[testimonialIndex].position}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -489,7 +445,7 @@ export default function Home() {
                   key={i}
                   onClick={() => setTestimonialIndex(i)}
                   className={`w-3 h-3 rounded-full transition-all ${
-                    i === testimonialIndex ? 'bg-crimson w-8' : 'bg-slate-300'
+                    i === testimonialIndex ? "bg-crimson w-8" : "bg-slate-300"
                   }`}
                 />
               ))}
@@ -506,12 +462,25 @@ export default function Home() {
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="inline-block w-7 h-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <circle cx="12" cy="12" r="10" strokeWidth="2" />
-                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4m0-4h.01" />
+                  <path
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 16v-4m0-4h.01"
+                  />
                 </svg>
               </span>
-              <span className="text-slateInk/70">For cost, venue, date and any other query</span>
+              <span className="text-slateInk/70">
+                For cost, venue, date and any other query
+              </span>
             </div>
             <Link
               to="/contact"
@@ -520,51 +489,6 @@ export default function Home() {
               Contact Us →
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Leadership Section */}
-      <section id="leadership" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">LEADERSHIP</h2>
-            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
-            <p className="text-base sm:text-lg md:text-xl text-slateInk/80 max-w-4xl mx-auto px-2 sm:px-0">
-              Leading global education transformation through strategic collaboration, innovative programs, and inclusive initiatives that empower learners and strengthen workforce readiness across nations.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {leadership.map((member, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="relative overflow-hidden h-64">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-4 sm:p-5 md:p-6 text-center">
-                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-1 sm:mb-2">{member.name}</h3>
-                  <p className="text-crimson font-semibold mb-1 text-sm sm:text-base">{member.role}</p>
-                  <p className="text-slateInk/60 text-xs sm:text-sm">{member.location}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -578,10 +502,13 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">Contact Us</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-6">
+              Contact Us
+            </h2>
             <div className="h-1 w-20 bg-crimson mx-auto mb-8"></div>
             <p className="text-lg md:text-xl text-slateInk/80 max-w-3xl mx-auto">
-              Get in touch with us for any queries or to begin your educational journey with Nova Vista.
+              Get in touch with us for any queries or to begin your educational
+              journey with Nova Vista.
             </p>
           </motion.div>
 
@@ -594,12 +521,16 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-8">Send Us an Enquiry</h3>
+              <h3 className="text-2xl md:text-3xl font-serif text-slateInk mb-8">
+                Send Us an Enquiry
+              </h3>
 
               <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Full Name</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">
+                      Full Name
+                    </label>
                     <input
                       name="fullName"
                       required
@@ -608,7 +539,9 @@ export default function Home() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Email Address</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">
+                      Email Address
+                    </label>
                     <input
                       name="email"
                       type="email"
@@ -620,7 +553,9 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Phone Number</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">
+                    Phone Number
+                  </label>
                   <input
                     name="phone"
                     type="tel"
@@ -630,13 +565,17 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Program of Interest</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">
+                    Program of Interest
+                  </label>
                   <select
                     name="program"
                     className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
                     defaultValue=""
                   >
-                    <option value="" disabled>Select a program</option>
+                    <option value="" disabled>
+                      Select a program
+                    </option>
                     <option value="certificate">Certificate Program</option>
                     <option value="diploma">Diploma Program</option>
                     <option value="degree">Degree Program</option>
@@ -646,7 +585,9 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Message</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     required
@@ -659,7 +600,9 @@ export default function Home() {
                 <div className="pt-6">
                   <button
                     type="submit"
-                    disabled={formStatus === "loading" || formStatus === "success"}
+                    disabled={
+                      formStatus === "loading" || formStatus === "success"
+                    }
                     className={`w-full py-4 rounded-full font-semibold text-white transition-all duration-300 ${
                       formStatus === "success"
                         ? "bg-green-700 cursor-default"
@@ -678,7 +621,9 @@ export default function Home() {
                     )}
                   </button>
                   {formStatus === "error" && (
-                    <p className="text-red-600 text-sm mt-4 text-center">Something went wrong. Please try again.</p>
+                    <p className="text-red-600 text-sm mt-4 text-center">
+                      Something went wrong. Please try again.
+                    </p>
                   )}
                 </div>
               </form>
@@ -695,15 +640,23 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <span className="text-2xl">📞</span>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-slateInk/50 mb-1">Phone / WhatsApp</p>
-                    <p className="text-lg text-slateInk font-medium">+91 97735 09497</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-slateInk/50 mb-1">
+                      Phone / WhatsApp
+                    </p>
+                    <p className="text-lg text-slateInk font-medium">
+                      +91 97735 09497
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <span className="text-2xl">📧</span>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-slateInk/50 mb-1">Email</p>
-                    <p className="text-lg text-slateInk font-medium">NovaVista.india@gmail.com</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-slateInk/50 mb-1">
+                      Email
+                    </p>
+                    <p className="text-lg text-slateInk font-medium">
+                      NovaVista.india@gmail.com
+                    </p>
                   </div>
                 </div>
               </div>
@@ -716,54 +669,6 @@ export default function Home() {
                 />
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Offices Section */}
-      <section id="offices" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-slateInk mb-4 sm:mb-6">Our Offices</h2>
-            <div className="h-1 w-16 sm:w-20 bg-crimson mx-auto mb-4 sm:mb-6 md:mb-8"></div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {[
-              { country: "India", address: "B37, Lajpat Nagar-2, New Delhi, 110024", image: "https://picsum.photos/600/400?random=50" },
-              { country: "Germany", address: "Truderinger Strasse 206 Munich, 81825", image: "https://picsum.photos/600/400?random=51" },
-              { country: "USA", address: "3314 Windridge Ave, Thousand Oaks, CA, 91362", image: "https://picsum.photos/600/400?random=52" },
-              { country: "Bangladesh", address: "Shimanto Square Market, Shope no. 262, 2nd Floor, Dhanmondi, Dhaka.", image: "https://picsum.photos/600/400?random=53" },
-              { country: "Qatar", address: "Jabir Ibn Hayyan Street, Abu Dhabi, 110786", image: "https://picsum.photos/600/400?random=59" },
-              { country: "Nepal", address: "Baluwatar 4 Kathmandu Nepal – 44616", image: "https://picsum.photos/600/400?random=54" }
-            ].map((office, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="relative overflow-hidden h-48">
-                  <img
-                    src={office.image}
-                    alt={office.country}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-4 sm:p-5 md:p-6">
-                  <h3 className="text-lg sm:text-xl font-serif text-slateInk mb-2 sm:mb-3">{office.country}</h3>
-                  <p className="text-slateInk/70 text-xs sm:text-sm leading-relaxed">{office.address}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

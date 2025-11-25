@@ -7,9 +7,11 @@ interface HeroProps {
   headline: string;
   subline: string;
   onOpenModal?: () => void;
+  backgroundImage?: string;
+  position?: 'left' | 'center' | 'right';
 }
 
-export default function Hero({ tagline, headline, subline, onOpenModal }: HeroProps) {
+export default function Hero({ tagline, headline, subline, onOpenModal ,backgroundImage, position}: HeroProps) {
   const scrollToSection = (hash: string) => {
     if (hash.startsWith('#')) {
       hash = hash.substring(1);
@@ -40,8 +42,8 @@ export default function Hero({ tagline, headline, subline, onOpenModal }: HeroPr
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(31, 42, 55, 0.85) 0%, rgba(165, 28, 48, 0.75) 100%), url('/s1/s1-bg.jpg')`,
-          backgroundPosition: 'top ',
+          backgroundImage: `linear-gradient(135deg, rgba(31, 42, 55, 0.85) 0%, rgba(165, 28, 48, 0.75) 100%), url(${backgroundImage || '/s1/s1-bg.jpg'})`,
+          backgroundPosition: position || 'center',
           backgroundRepeat: 'no-repeat',
         }} 
       />
@@ -67,10 +69,12 @@ export default function Hero({ tagline, headline, subline, onOpenModal }: HeroPr
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Empowering Growth.<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
-              Elevating Futures.
-            </span>
+           {headline || <>Empowering Growth.<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
+                Elevating Futures.
+              </span>
+            </>
+            }
           </motion.h1>
 
           <motion.p 

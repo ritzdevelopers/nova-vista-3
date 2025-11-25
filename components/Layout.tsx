@@ -53,16 +53,13 @@ export default function Layout() {
 
   // About Us dropdown items
   const aboutDropdownItems = [
-    { label: "Our Vision", href: "/#vision" },
-    { label: "Leadership", href: "/#leadership" },
-    { label: "Workshop", href: "/#workshops" },
-    { label: "About Nova Vista Education", href: "/#about" },
+    { label: "Our Vision", href: "/vision", isLink: true },
+    { label: "Leadership", href: "/leadership", isLink: true },
   ];
 
   // Contact Us dropdown items
   const contactDropdownItems = [
-    { label: "Our Offices", href: "/#offices" },
-    { label: "Get Connect", href: "/contact" },
+    { label: "Our Offices", href: "/offices", isLink: true },
   ];
 
   return (
@@ -74,7 +71,7 @@ export default function Layout() {
           <div className="flex gap-6 ml-auto">
             <a href="#" className="hover:text-crimson transition-colors">Student Portal</a>
             <a href="#" className="hover:text-crimson transition-colors">Faculty</a>
-            <a href="#" className="hover:text-crimson transition-colors">News</a>
+            <a href="#" className="hover:text-crimson transition-colors">Blogs</a>
           </div>
         </div>
       </div>
@@ -139,17 +136,28 @@ export default function Layout() {
                   className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-100 py-2 z-50"
                 >
                   {aboutDropdownItems.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={(e) => {
-                        handleNavClick(e, item.href);
-                        setAboutDropdownOpen(false);
-                      }}
-                      className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
-                    >
-                      {item.label}
-                    </a>
+                    item.isLink ? (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => setAboutDropdownOpen(false)}
+                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={(e) => {
+                          handleNavClick(e, item.href);
+                          setAboutDropdownOpen(false);
+                        }}
+                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    )
                   ))}
                 </motion.div>
               )}
@@ -165,13 +173,12 @@ export default function Layout() {
             </a>
 
             {/* Our Services */}
-            <a
-              href="/#services"
-              onClick={(e) => handleNavClick(e, '/#services')}
+            <Link
+              to="/services"
               className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap"
             >
               Our Services
-            </a>
+            </Link>
 
             {/* Contact Us Dropdown */}
             <div 
@@ -216,7 +223,16 @@ export default function Layout() {
                   className="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 py-2 z-50"
                 >
                   {contactDropdownItems.map((item) => (
-                    item.href.startsWith('/#') ? (
+                    item.isLink ? (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => setContactDropdownOpen(false)}
+                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
                       <a
                         key={item.label}
                         href={item.href}
@@ -228,15 +244,6 @@ export default function Layout() {
                       >
                         {item.label}
                       </a>
-                    ) : (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        onClick={() => setContactDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-slateInk/70 hover:text-crimson hover:bg-slate-50 transition-colors"
-                      >
-                        {item.label}
-                      </Link>
                     )
                   ))}
                 </motion.div>
@@ -287,17 +294,28 @@ export default function Layout() {
               <div className="space-y-2">
                 <p className="text-lg font-serif text-slateInk font-semibold">About Us</p>
                 {aboutDropdownItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => {
-                      handleNavClick(e, item.href);
-                      setMobileMenuOpen(false);
-                    }}
-                    className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
-                  >
-                    {item.label}
-                  </a>
+                  item.isLink ? (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={(e) => {
+                        handleNavClick(e, item.href);
+                        setMobileMenuOpen(false);
+                      }}
+                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
+                    >
+                      {item.label}
+                    </a>
+                  )
                 ))}
               </div>
 
@@ -312,21 +330,27 @@ export default function Layout() {
                 Online Admission
               </a>
 
-              <a
-                href="/#services"
-                onClick={(e) => {
-                  handleNavClick(e, '/#services');
-                  setMobileMenuOpen(false);
-                }}
+              <Link
+                to="/services"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-lg font-serif text-slateInk hover:text-crimson"
               >
                 Our Services
-              </a>
+              </Link>
 
               <div className="space-y-2">
                 <p className="text-lg font-serif text-slateInk font-semibold">Contact Us</p>
                 {contactDropdownItems.map((item) => (
-                  item.href.startsWith('/#') ? (
+                  item.isLink ? (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
                     <a
                       key={item.label}
                       href={item.href}
@@ -338,15 +362,6 @@ export default function Layout() {
                     >
                       {item.label}
                     </a>
-                  ) : (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block pl-4 text-base text-slateInk/70 hover:text-crimson"
-                    >
-                      {item.label}
-                    </Link>
                   )
                 ))}
               </div>
@@ -392,13 +407,12 @@ export default function Layout() {
           <div>
             <p className="kicker text-white/40 mb-6">Quick Links</p>
             <ul className="space-y-3 text-sm text-white/70">
-              <li><a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="hover:text-white transition-colors">About Nova Vista Education</a></li>
-              <li><a href="/#vision" onClick={(e) => handleNavClick(e, '/#vision')} className="hover:text-white transition-colors">Our Vision</a></li>
+              <li><Link to="/vision" className="hover:text-white transition-colors">Our Vision</Link></li>
               <li><a href="/#admission" onClick={(e) => handleNavClick(e, '/#admission')} className="hover:text-white transition-colors">Online Admission</a></li>
-              <li><a href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-white transition-colors">Our Services</a></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Our Services</Link></li>
               <li><a href="/#workshops" onClick={(e) => handleNavClick(e, '/#workshops')} className="hover:text-white transition-colors">Workshops</a></li>
-              <li><a href="/#leadership" onClick={(e) => handleNavClick(e, '/#leadership')} className="hover:text-white transition-colors">Leadership</a></li>
-              <li><a href="/#offices" onClick={(e) => handleNavClick(e, '/#offices')} className="hover:text-white transition-colors">Our Offices</a></li>
+              <li><Link to="/leadership" className="hover:text-white transition-colors">Leadership</Link></li>
+              <li><Link to="/offices" className="hover:text-white transition-colors">Our Offices</Link></li>
             </ul>
           </div>
 
