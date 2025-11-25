@@ -67,7 +67,7 @@ export default function Layout() {
       {/* Top Utility Bar */}
       <div className="bg-slateInk text-white text-xs tracking-widest z-50 relative">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
-          <span className="uppercase hidden sm:inline-block">Global Education Standard</span>
+          <span className="uppercase hidden ">Global Education Standard</span>
           <div className="flex gap-6 ml-auto">
             <a href="#" className="hover:text-crimson transition-colors">Student Portal</a>
             <a href="#" className="hover:text-crimson transition-colors">Faculty</a>
@@ -408,9 +408,7 @@ export default function Layout() {
             <p className="kicker text-white/40 mb-6">Quick Links</p>
             <ul className="space-y-3 text-sm text-white/70">
               <li><Link to="/vision" className="hover:text-white transition-colors">Our Vision</Link></li>
-              <li><a href="/#admission" onClick={(e) => handleNavClick(e, '/#admission')} className="hover:text-white transition-colors">Online Admission</a></li>
               <li><Link to="/services" className="hover:text-white transition-colors">Our Services</Link></li>
-              <li><a href="/#workshops" onClick={(e) => handleNavClick(e, '/#workshops')} className="hover:text-white transition-colors">Workshops</a></li>
               <li><Link to="/leadership" className="hover:text-white transition-colors">Leadership</Link></li>
               <li><Link to="/offices" className="hover:text-white transition-colors">Our Offices</Link></li>
             </ul>
@@ -418,19 +416,12 @@ export default function Layout() {
 
           <div>
             <p className="kicker text-white/40 mb-6">Connect</p>
-            <div className="flex gap-4 mb-6">
+            <div className="flex flex-col gap-3 mb-6">
               <a href="#" className="text-white/60 hover:text-white transition-colors">LinkedIn</a>
-              <span className="text-white/20">·</span>
               <a href="#" className="text-white/60 hover:text-white transition-colors">YouTube</a>
-              <span className="text-white/20">·</span>
               <a href="#" className="text-white/60 hover:text-white transition-colors">X (Twitter)</a>
             </div>
-            <Link
-              to="/contact"
-              className="inline-block px-6 py-2 border border-white/20 rounded-full text-sm hover:bg-white hover:text-slateInk transition-all"
-            >
-              Contact Us
-            </Link>
+           
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center md:text-left text-xs text-white/30 uppercase tracking-widest">

@@ -228,7 +228,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16">
             {[
               "https://img.freepik.com/premium-photo/international-day-education_1028264-162.jpg",
-              "https://cdn.pixabay.com/photo/2023/05/07/06/56/ai-generated-7975784_1280.jpg",
+              "https://i.pinimg.com/736x/cf/7a/03/cf7a03f0c8434dfdf455c82317830fa7.jpg",
 
               "https://i.pinimg.com/originals/1a/0a/0d/1a0a0d559f88af6947e54bed62e08085.jpg",
             ].map((i, idx) => (
@@ -290,7 +290,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="https://i.pinimg.com/736x/a8/c0/5d/a8c05d0cd6003f712622f64f081113f4.jpg"
+                src="https://i.pinimg.com/1200x/e5/7e/32/e57e3206fa458c41ffe495f8823c4c58.jpg"
                 alt="Online Admission"
                 className="w-full h-[400px] object-cover"
               />
@@ -303,7 +303,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <img
-                src="https://assets.thehansindia.com/h-upload/2023/07/07/1363284-scholarships.webp"
+                src="https://i.pinimg.com/1200x/fa/e1/90/fae1901e016f26ef04ee7a7bd629f460.jpg"
                 alt="Education Programs"
                 className="w-full h-[400px] object-cover"
               />

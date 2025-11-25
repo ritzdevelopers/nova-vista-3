@@ -110,7 +110,7 @@ export default function Hero({ tagline, headline, subline, onOpenModal ,backgrou
                   onOpenModal();
                 }
               }}
-              className="px-8 py-4 border border-white/30 text-white rounded-full font-semibold text-base hover:bg-white/10 transition-all backdrop-blur-sm"
+              className="px-8 py-4 border hidden border-white/30 text-white rounded-full font-semibold text-base hover:bg-white/10 transition-all backdrop-blur-sm"
             >
               Explore Programs
             </button>

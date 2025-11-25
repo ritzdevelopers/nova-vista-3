@@ -25,22 +25,20 @@ export default function Offices() {
 
   return (
     <>
-  <Hero
-  tagline="Nova Vista – Learn Without Limits"
-  headline={
-    <>
-      Connecting, <br />
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
-        Helping Students Everywhere.
-      </span>
-    </>
-  }
-  subline="With teams in India, Germany, USA, Bangladesh, Qatar, and Nepal, we guide students and teachers across the globe. Visit us to explore study options."
-  onOpenModal={openModal}
-  backgroundImage="https://i.pinimg.com/1200x/ca/23/8c/ca238c86c1618bc0a12e30883c05cf77.jpg"
-/>
-
-
+      <Hero
+        tagline="Nova Vista – Education Beyond Boundaries"
+        headline={
+          <>
+            Connecting Continents.<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
+              Serving Students Globally.
+            </span>
+          </>
+        }
+        subline="With offices spanning across India, Germany, USA, Bangladesh, Qatar, and Nepal, we create initiatives that assist students, scholars, and expand teaching and learning across cultures. Visit us to explore educational opportunities and promote educational equity."
+        onOpenModal={openModal}
+        backgroundImage="https://i.pinimg.com/1200x/ca/23/8c/ca238c86c1618bc0a12e30883c05cf77.jpg"
+      />
 
       {/* Our Offices Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">

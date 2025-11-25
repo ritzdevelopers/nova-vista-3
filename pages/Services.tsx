@@ -32,7 +32,7 @@ export default function Services() {
     },
     {
       title: "Counselings and Recruitment of Student from Abroad",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop",
+      image: "https://i.pinimg.com/1200x/52/36/57/523657cecd6bbd43de575344e8b1b152.jpg",
       description: "Expert guidance and support for international student recruitment and counseling."
     },
     {
@@ -49,20 +49,22 @@ export default function Services() {
 
   return (
     <>
-      <Hero
-        tagline="Nova Vista – Education Beyond Boundaries"
-        headline={
-          <>
-            Global Education Solutions.<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
-              Empowering Learners Worldwide.
-            </span>
-          </>
-        }
-        subline="NovaVista is a global organization that designs and implements national and international education strategies and program services. We work with governments, policymakers, educators, and employers across the globe to prepare students and professionals for the global workforce."
-        onOpenModal={openModal}
-        backgroundImage="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=2400&h=1600&fit=crop"
-      />
+<Hero
+  tagline="Nova Vista – Learning Without Limits"
+  headline={
+    <>
+      Global Education.<br/>
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
+        Empowering Learners.
+      </span>
+    </>
+  }
+  subline="NovaVista works worldwide with governments, educators, and employers to create simple, effective learning programs for students and professionals."
+  onOpenModal={openModal}
+  backgroundImage="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=2400&h=1600&fit=crop"
+/>
+
+
 
       {/* Our Services Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
@@ -95,7 +97,7 @@ export default function Services() {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
                 <div className="p-4 sm:p-5 md:p-6">
