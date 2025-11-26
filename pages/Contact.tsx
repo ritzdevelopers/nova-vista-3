@@ -40,13 +40,13 @@ export default function Contact() {
               <div className="space-y-8">
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-2">General Inquiries</p>
-                  <p className="font-serif text-xl">+1 (415) 555-0110</p>
+                  <p className="font-serif text-xl">+91 97735 09497</p>
                   <p className="text-white/60">admissions@novavista.edu</p>
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-2">Visit Us</p>
-                  <p className="font-serif text-xl">10 Hudson Yards</p>
-                  <p className="text-white/60">New York, NY 10001</p>
+                  <p className="font-serif text-xl">B37, Lajpat Nagar-2</p>
+                  <p className="text-white/60">New Delhi, 110024</p>
                 </div>
               </div>
 
@@ -93,20 +93,6 @@ export default function Contact() {
                   placeholder="+91 97735 09497" 
                   className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent" 
                 />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-slateInk/50">Program of Interest</label>
-                <select 
-                  name="program" 
-                  className="w-full border-b border-slate-200 py-3 text-slateInk focus:outline-none focus:border-crimson transition-colors bg-transparent"
-                  defaultValue=""
-                >
-                  <option value="" disabled>Select a program</option>
-                  <option value="academic">Academic Recognition</option>
-                  <option value="skills">Skill & Personality Development</option>
-                  <option value="other">Other Inquiry</option>
-                </select>
               </div>
 
               <div className="space-y-2">

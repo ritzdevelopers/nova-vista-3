@@ -85,7 +85,7 @@ export default function Layout() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="group transition-opacity hover:opacity-90">
             <img 
-              src="/nova-logo-1.png" 
+              src="/nova-black-logo2.png" 
               alt="Nova Vista Education" 
               className="h-12 md:h-16 lg:h-16 w-auto object-contain"
             />
@@ -196,12 +196,12 @@ export default function Layout() {
                 }, 800);
               }}
             >
-              <button className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap flex items-center gap-1">
+              <Link to="/contact" className="text-xs xl:text-sm font-medium transition-colors uppercase tracking-wider text-slateInk/70 hover:text-crimson whitespace-nowrap flex items-center gap-1">
                 Contact Us
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </button>
+              </Link >
               
               {contactDropdownOpen && (
                 <motion.div
@@ -388,7 +388,7 @@ export default function Layout() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 px-6">
           <div className="col-span-1 md:col-span-1">
             <img 
-              src="/nova-logo-2.png" 
+              src="/nova-logo-2-white.png" 
               alt="Nova Vista Education" 
               className="h-12 md:h-16 lg:h-20 w-auto object-contain mb-4"
             />
@@ -399,9 +399,8 @@ export default function Layout() {
           
           <div>
             <p className="kicker text-white/40 mb-6">Headquarters</p>
-            <p className="text-white/90 font-serif">10 Hudson Yards</p>
-            <p className="text-white/90 font-serif">New York, NY 10001</p>
-            <p className="mt-4 text-white/60 text-sm">+1 (415) 555-0110</p>
+            <p className="text-white/90 font-serif">B37, Lajpat Nagar-2</p>
+            <p className="text-white/90 font-serif">New Delhi, 110024</p>
           </div>
 
           <div>
@@ -421,7 +420,12 @@ export default function Layout() {
               <a href="#" className="text-white/60 hover:text-white transition-colors">YouTube</a>
               <a href="#" className="text-white/60 hover:text-white transition-colors">X (Twitter)</a>
             </div>
-           
+            <Link
+              to="/contact"
+              className="inline-block px-6 py-2 border border-white/20 rounded-full text-sm hover:bg-white hover:text-slateInk transition-all"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center md:text-left text-xs text-white/30 uppercase tracking-widest">
