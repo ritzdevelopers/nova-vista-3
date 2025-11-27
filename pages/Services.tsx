@@ -21,7 +21,7 @@ export default function Services() {
       description: "Building strategic partnerships and collaborations with educational institutions worldwide."
     },
     {
-      title: "Establishment of School/Colleges/Universities & Off-Shore Campuses",
+      title: "Establishment of School, Colleges & Universities & Off-Shore Campuses",
       image: "/s2/s2-i2.jpg",
       description: "Supporting the establishment and development of educational institutions globally."
     },

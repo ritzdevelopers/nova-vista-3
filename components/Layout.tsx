@@ -399,8 +399,8 @@ export default function Layout() {
           
           <div>
             <p className="kicker text-white/40 mb-6">Headquarters</p>
-            <p className="text-white/90 font-serif">B37, Lajpat Nagar-2</p>
-            <p className="text-white/90 font-serif">New Delhi, 110024</p>
+            <p className="text-white/60">B37, Lajpat Nagar-2</p>
+            <p className="text-white/60">New Delhi, 110024</p>
           </div>
 
           <div>
